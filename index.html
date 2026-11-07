@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helpcentre | Account Access and Software Support Guides</title>
+  <style>
+    :root {
+      --brand: #0869a6;
+      --brand-dark: #064f7d;
+      --navy: #17324d;
+      --ink: #293846;
+      --muted: #657482;
+      --line: #e1e8ee;
+      --pale: #edf6fb;
+      --surface: #f5f8fa;
+      --white: #fff;
+      --shadow: 0 12px 32px rgba(23, 50, 77, .07);
+      --radius: 14px;
+      --content: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { color: var(--brand-dark); }
+    .container { width: min(92%, var(--content)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav-wrap {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      color: var(--navy);
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -.06em;
+      text-transform: lowercase;
+    }
+    .brand span { color: var(--brand); }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a {
+      color: #344657;
+      font-size: .94rem;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--brand); }
+    .nav-cta {
+      padding: 10px 17px;
+      color: var(--white) !important;
+      background: var(--brand);
+      border-radius: 7px;
+    }
+    .nav-cta:hover { background: var(--brand-dark); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 88px 0 82px;
+      background: linear-gradient(115deg, #edf7fc 0%, #f8fbfd 58%, #e7f2f9 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -110px;
+      top: -155px;
+      border: 1px solid rgba(8,105,166,.13);
+      border-radius: 50%;
+      box-shadow: 0 0 0 38px rgba(8,105,166,.035), 0 0 0 78px rgba(8,105,166,.025);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 17px;
+      color: var(--brand-dark);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--brand);
+    }
+    h1, h2, h3 { color: var(--navy); line-height: 1.22; }
+    h1 {
+      max-width: 760px;
+      margin: 0 0 20px;
+      font-size: clamp(2.35rem, 5vw, 3.75rem);
+      letter-spacing: -.045em;
+    }
+    .hero p {
+      max-width: 690px;
+      margin: 0;
+      color: #536777;
+      font-size: 1.12rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 21px;
+      border: 1px solid var(--brand);
+      border-radius: 7px;
+      background: var(--brand);
+      color: var(--white);
+      font-weight: 700;
+      transition: .2s ease;
+    }
+    .button:hover { background: var(--brand-dark); color: var(--white); transform: translateY(-1px); }
+    .button-secondary { background: transparent; color: var(--brand-dark); }
+    .button-secondary:hover { background: var(--white); color: var(--brand-dark); }
+
+    .trust-strip { border-bottom: 1px solid var(--line); background: var(--white); }
+    .trust-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      padding: 23px 0;
+    }
+    .trust-item { display: flex; align-items: center; gap: 12px; color: #536777; font-size: .92rem; font-weight: 600; }
+    .trust-icon {
+      display: grid;
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--pale);
+      color: var(--brand);
+      font-size: 1.1rem;
+    }
+
+    .section { padding: 76px 0; }
+    .section-soft { background: var(--surface); }
+    .section-heading { max-width: 720px; margin-bottom: 34px; }
+    .section-heading h2 { margin: 0 0 12px; font-size: clamp(1.8rem, 3vw, 2.45rem); letter-spacing: -.035em; }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px; }
+    .guide-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 218px;
+      padding: 25px 26px 23px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 3px 14px rgba(23,50,77,.025);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .guide-card:hover {
+      transform: translateY(-3px);
+      border-color: #b8d5e7;
+      box-shadow: var(--shadow);
+    }
+    .card-number {
+      margin-bottom: 12px;
+      color: var(--brand);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+    .guide-card h3 { margin: 0 0 10px; font-size: 1.16rem; }
+    .guide-card p { margin: 0 0 18px; color: var(--muted); font-size: .93rem; }
+    .card-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-weight: 700; font-size: .92rem; }
+    .card-link span { transition: transform .2s ease; }
+    .guide-card:hover .card-link span { transform: translateX(4px); }
+
+    .help-panel {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 35px;
+      padding: 37px;
+      border: 1px solid #d8e9f3;
+      border-radius: 16px;
+      background: var(--pale);
+    }
+    .help-panel h2 { margin: 0 0 12px; font-size: 1.8rem; }
+    .help-panel p { margin: 0; color: #536777; }
+    .help-note {
+      padding: 19px 21px;
+      border-radius: 11px;
+      background: rgba(255,255,255,.82);
+      color: #526574;
+      font-size: .9rem;
+    }
+    .help-note strong { display: block; margin-bottom: 5px; color: var(--navy); }
+
+    .site-footer { padding: 38px 0 24px; background: #142b40; color: #d4e0e9; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 30px; padding-bottom: 26px; }
+    .footer-brand { color: var(--white); font-size: 1.4rem; font-weight: 800; letter-spacing: -.05em; }
+    .footer-brand span { color: #78bce2; }
+    .footer-copy { max-width: 460px; margin: 8px 0 0; color: #b9c9d5; font-size: .9rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 19px; }
+    .footer-links a { color: #d4e0e9; font-size: .9rem; }
+    .footer-bottom { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.14); color: #aebfcb; font-size: .82rem; }
+
+    @media (max-width: 760px) {
+      .nav-wrap { min-height: 68px; }
+      .nav-links { gap: 14px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { padding: 66px 0 62px; }
+      .trust-items { grid-template-columns: 1fr; gap: 13px; }
+      .section { padding: 58px 0; }
+      .guide-grid { grid-template-columns: 1fr; }
+      .help-panel { grid-template-columns: 1fr; padding: 26px; }
+      .footer-top { flex-direction: column; }
+    }
+  </style>
+  <link rel="canonical" href="https://YOUR-GITHUB-USERNAME.github.io/">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Helpcentre home">help<span>centre</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="#guides">Guides</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#guides">Browse help guides</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="eyebrow">Clear guidance. Confident next steps.</div>
+        <h1>Helpful answers for your account and software questions.</h1>
+        <p>Explore straightforward guides covering account access, sign-in troubleshooting, downloads, and common software questions. Each article is designed to help you understand the issue and work through practical next steps.</p>
+        <div class="hero-actions">
+          <a class="button" href="#guides">Explore help guides</a>
+          <a class="button button-secondary" href="#about">About this resource</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Guide features">
+      <div class="container trust-items">
+        <div class="trust-item"><span class="trust-icon">✓</span><span>Step-by-step explanations</span></div>
+        <div class="trust-item"><span class="trust-icon">⌕</span><span>Common issues made easier to understand</span></div>
+        <div class="trust-item"><span class="trust-icon">↗</span><span>Practical links between related topics</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="guides">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Knowledge library</div>
+          <h2>Account access and download guides</h2>
+          <p>Choose a topic below to read a focused guide. Related articles are connected through internal links so you can move between relevant troubleshooting steps.</p>
+        </div>
+
+        <div class="guide-grid">
+          <article class="guide-card">
+            <div class="card-number">GUIDE 01</div>
+            <h3>How to Log In to Your UFile Account in Canada — Access Your Tax Information Online</h3>
+            <p>Understand the general account sign-in process and ways to locate your tax information online.</p>
+            <a class="card-link" href="how-to-log-in-to-your-ufile-account-in-canada.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 02</div>
+            <h3>What to Do When www.ufile.ca Login Is Not Working — Common Access Issues Explained</h3>
+            <p>Review common browser, password, and account-access issues that may interrupt a sign-in attempt.</p>
+            <a class="card-link" href="www-ufile-ca-login-not-working.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 03</div>
+            <h3>Why Can't I Sign In to My UFile Account? — Troubleshooting Login Problems</h3>
+            <p>Work through practical checks when your account credentials or sign-in process are not accepted.</p>
+            <a class="card-link" href="why-cant-i-sign-in-to-my-ufile-account.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 04</div>
+            <h3>How to Fix UFile Login Errors — Solutions for Account Sign-In Issues</h3>
+            <p>Learn how to identify possible login errors and take sensible troubleshooting steps.</p>
+            <a class="card-link" href="how-to-fix-ufile-login-errors.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 05</div>
+            <h3>When UFile Online Login Fails — How to Troubleshoot Account Access Problems</h3>
+            <p>Check connection, browser, and account details when online access does not work as expected.</p>
+            <a class="card-link" href="when-ufile-online-login-fails.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 06</div>
+            <h3>UFile Download Already Purchased Error — How to Fix Download Issues</h3>
+            <p>Explore what to check when you have purchased software but cannot find or start its download.</p>
+            <a class="card-link" href="ufile-download-already-purchased-error.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 07</div>
+            <h3>UFile Download Already Installed or Registered Error — How to Resolve It</h3>
+            <p>Understand possible installation or registration messages and how to review your setup.</p>
+            <a class="card-link" href="ufile-download-already-installed-or-registered-error.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 08</div>
+            <h3>UFile Canada Login — Access Your Account and Manage Your Tax Returns</h3>
+            <p>Review account-access basics and good practices for managing tax-return information.</p>
+            <a class="card-link" href="ufile-canada-login.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 09</div>
+            <h3>UFile Sign In Online Canada — Simple Steps to Access Your Account</h3>
+            <p>Follow a simple checklist for preparing to sign in and resolving common access obstacles.</p>
+            <a class="card-link" href="ufile-sign-in-online-canada.html">Read guide <span>→</span></a>
+          </article>
+          <article class="guide-card">
+            <div class="card-number">GUIDE 10</div>
+            <h3>UFile 2025 Login — Sign In, Download, and Access Your Purchased Software</h3>
+            <p>Find general guidance for locating a previous purchase and checking the correct product version.</p>
+            <a class="card-link" href="ufile-2025-login.html">Read guide <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="about">
+      <div class="container">
+        <div class="help-panel">
+          <div>
+            <div class="eyebrow">About this resource</div>
+            <h2>Information designed to make the next step clearer.</h2>
+            <p>Helpcentre is an independent informational resource. The guides explain general account-access and software troubleshooting concepts in plain language. They are not a substitute for instructions from the software provider.</p>
+          </div>
+          <div class="help-note">
+            <strong>Keep your information secure</strong>
+            Always use the provider's official website for account sign-in, payments, downloads, and password recovery. Never share your password, verification code, or sensitive tax information with an unauthorised person.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a class="footer-brand" href="index.html">help<span>centre</span></a>
+          <p class="footer-copy">Independent informational guides for understanding common account-access and software questions.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="#guides">Guides</a>
+          <a href="#about">About</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Helpcentre. Informational content only. Not affiliated with or endorsed by UFile.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
